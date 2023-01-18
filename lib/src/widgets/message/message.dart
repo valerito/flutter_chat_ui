@@ -12,6 +12,7 @@ import 'image_message.dart';
 import 'message_status.dart';
 import 'text_message.dart';
 import 'user_avatar.dart';
+import 'video_message.dart';
 
 /// Base widget for all message types in the chat. Renders bubbles around
 /// messages and status. Sets maximum width for a message for
@@ -379,7 +380,10 @@ class Message extends StatelessWidget {
         final videoMessage = message as types.VideoMessage;
         return videoMessageBuilder != null
             ? videoMessageBuilder!(videoMessage, messageWidth: messageWidth)
-            : const SizedBox();
+            : VideoMessage(
+                message: videoMessage,
+                messageWidth: messageWidth
+              );
       default:
         return const SizedBox();
     }
